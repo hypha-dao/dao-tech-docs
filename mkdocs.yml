@@ -1,0 +1,8 @@
+site_name: Hypha Docs
+theme:
+  name: 'material'
+nav:
+  - Home: index.md
+  - Membership: membership.md
+  - Profiles: profiles.md
+  - Proposals: proposals.md
