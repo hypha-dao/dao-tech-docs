@@ -8,10 +8,11 @@ nav:
 - Proposals: proposals.md
 - Test Net: test-net.md
 - Tech Docs: 
+    - 'Enrollment': 'tech-docs/enrollment.md'
     - Proposals:
         - 'General': 'tech-docs/proposals.md'
         - 'Roles': 'tech-docs/proposals/roles.md'
         - 'Assignments': 'tech-docs/proposals/assignments.md'
         - 'Payouts': 'tech-docs/proposals/payouts.md'
-    - 'Enrollment': 'tech-docs/enrollment.md'
-    # - 'Proposals': 'tech-docs/proposals.md'
+        - 'EOSJS Propose': 'tech-docs/proposals/eosjs-propose.md'
+        - 'EOSJS Queries': 'tech-docs/proposals/eosjs-queries.md'
