@@ -1,7 +1,6 @@
 
 
 ## User Registration
-
 To register a user for Hypha DAO, the user must sign a transaction to register, and the ```hyphdaomain``` account must approve the mint action to actually issue the token.
 
 ```
@@ -28,7 +27,6 @@ cleos -u https://test.telos.kitchen get table trailservice johnnyhypha1 voters
 ```
 
 ## Creating a Role Proposal
-
 To create a proposal, provide the following attributes
 ```
 void hyphadao::proposerole (const name& proposer,               // must approve this transaction
