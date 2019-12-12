@@ -1,8 +1,7 @@
-
 ## Creating a Proposal
 The ```propose``` action is used to submit a proposal to Hypha. 
 
-> The ```proposals``` table within the Hypha DAO contract uses the Telos Kitchen Sink design pattern (link coming). This pattern is called the "Telos Kitchen Sink" pattern because it can store nearly any arbitrary data and it can adapt without upgrading the underlying EOSIO table structure.  ["Everything but the kitchen sink"](https://idioms.thefreedictionary.com/everything+but+the+kitchen+sink)
+> The ```proposals``` table within the Hypha DAO contract uses the Telos Kitchen Sink design pattern, named such because it can store nearly any arbitrary data and it can adapt without upgrading the underlying EOSIO table structure.  ["Everything but the kitchen sink"](https://idioms.thefreedictionary.com/everything+but+the+kitchen+sink)
 
 Here's the method signature for the ```propose``` action.
 ```
@@ -20,7 +19,7 @@ ACTION propose (const name&                		 proposer,
 ```
 
 ### Proposal Types
-Hypha DAO *currently* supports 3 three built in proposal types.
+Hypha DAO *currently* supports *three* built in proposal types.
 
 The ```proposal_type``` is an EOSIO ```name``` value. NOTE: proposal types are plural by practice.
 

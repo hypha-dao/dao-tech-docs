@@ -10,7 +10,7 @@ nav:
 - Tech Docs: 
     - 'Enrollment': 'tech-docs/enrollment.md'
     - Proposals:
-        - 'General': 'tech-docs/proposals.md'
+        - 'Overview': 'tech-docs/proposals.md'
         - 'Roles': 'tech-docs/proposals/roles.md'
         - 'Assignments': 'tech-docs/proposals/assignments.md'
         - 'Payouts': 'tech-docs/proposals/payouts.md'
