@@ -21,9 +21,10 @@ ACTION propose (const name&                		 proposer,
 
 #### Proposal Types
 Hypha DAO *currently* supports 3 three built in proposal types.
-- Propose Creation of a New Role  (```proposal_type="roles"```)
-- Propose Assignment of a Person to an Existing Role  (```proposal_type="assignments"```)
-- Propose a One-time Payout  (```proposal_type="payouts"```)
+
+1 - Propose Creation of a New Role  (```proposal_type="roles"```)
+1 - Propose Assignment of a Person to an Existing Role  (```proposal_type="assignments"```)
+1 - Propose a One-time Payout  (```proposal_type="payouts"```)
 
 #### Required Values
 Certain values are required to be within the ```map``` parameters for certain proposal types.   All proposals support/require ```title```, ```description```, and ```content```.  
@@ -38,9 +39,21 @@ content     | Any general purpose content field for text or markdown        | st
 ### Role Proposals
 Role proposals require the following additional attributes.
 
-Key             | Description                                           | Type      | Example Value
---------------- | ------------------------------------------------------| --------- | ------------------
-hypha_amount    | Per period payment amount in HYPHA for this role      | string    | "50 HYPHA"
-seeds_amount    | Per period payment amount in SEEDS for this role      | string    | "45.50000000 SEEDS"
-hvoice_amount   | Per period payment amount in HVOICE for this role     | string    | "50 HVOICE"
+Key             | Description                                               | Type      | Example Value
+--------------- | ----------------------------------------------------------| --------- | ------------------
+hypha_amount    | Per period payment amount in HYPHA for this role          | asset     | "50 HYPHA"
+seeds_amount    | Per period payment amount in SEEDS for this role          | asset     | "45.50000000 SEEDS"
+hvoice_amount   | Per period payment amount in HVOICE for this role         | asset     | "50 HVOICE"
+start_period    | First period_id for which this role is active/eligible    | int       | 32
+end_period      | Last period_id for which this role is active/eligible     | int       | 62
 
+### Assignment Proposals
+Assignment proposals require the following additional attributes.
+
+Key                 | Description                                                           | Type      | Example Value
+------------------- | ----------------------------------------------------------------------| --------- | ------------------
+assigned_account    | The account assigned to the role (also account to receive payment)          | name     | jameshypha11
+role_id    | The ```role_id``` primary key from the ```roles``` table          | int     | 43
+time_share  | The percentage of time (from 0-1) dedicated to this role  | float | 0.50
+
+### Payout Proposals
