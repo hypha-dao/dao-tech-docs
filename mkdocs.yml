@@ -7,4 +7,6 @@ nav:
   - Profiles: profiles.md
   - Proposals: proposals.md
   = Test Net: test-net.md
-  - Tech Docs: tech-docs.md
+  - Tech Docs: 
+      - 'Enrollment': 'tech-docs/enrollment.md'
+      - 'Proposals': 'tech-docs/proposals.md'
