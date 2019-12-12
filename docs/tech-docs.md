@@ -26,6 +26,8 @@ cleos -u https://test.telos.kitchen get table trailservice johnnyhypha1 voters
 }
 ```
 
+
+
 ## Creating a Role Proposal
 To create a proposal, provide the following attributes
 ```
