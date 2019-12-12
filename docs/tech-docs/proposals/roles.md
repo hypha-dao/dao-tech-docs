@@ -1,4 +1,3 @@
-
 ## Supported Attributes
 Role proposals require the following additional attributes.
 
@@ -9,7 +8,6 @@ seeds_amount    | Per period payment amount in SEEDS for this role          | as
 hvoice_amount   | Per period payment amount in HVOICE for this role         | asset     | "50 HVOICE"
 start_period    | First period_id for which this role is active/eligible    | int       | 32
 end_period      | Last period_id for which this role is active/eligible     | int       | 62
-
 
 ## Example EOSJS Code
 The ```api.transact``` method in eosjs requires a ```data``` object.  Here is an example object for a role proposal.

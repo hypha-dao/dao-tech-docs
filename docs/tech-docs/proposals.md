@@ -87,7 +87,7 @@ cleos -u https://test.telos.kitchen push action trailservice castvote '["haydenh
 To close the proposal, call the ```closeprop``` action.  If the proposal has enough votes, this action will invoke the ```trx_action_name``` within the proposal and pass the ```id``` attribute.  At that point, the code within ```trx_action_name``` will be able to query and access all of the data stored within the ```proposal``` object. See example below. 
 
 ```
-cleos -u https://test.telos.kitchen push action hyphadaomain closeprop '["roles", 26]' -p haydenhypha1
+cleos -u https://test.telos.kitchen push action hyphadaomain closeprop '["roles", 0]' -p haydenhypha1
 ```
 
 ### Example ```newrole``` Action
@@ -115,3 +115,9 @@ void hyphadao::newrole (const uint64_t& proposal_id) {
 						p_itr->ints.at("end_period"));
 }
 ```
+
+## Viewing the Created Role
+Now that the proposal is passed and executed, you can view the newly created role.
+
+```
+cleos 
