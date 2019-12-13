@@ -67,7 +67,7 @@ data: {
 ### Step 1: Propose a Role
 See [propose.js](eosjs-propose.md) for exact eosjs code. Copy the data object above to the ```propose.js``` file and run ```node propose.js```
 
-> You may need to run ```export PRIVATE_KEY=<insert key>```, and insert the key from the [../../test-net.md](Testnet Page)
+> You may need to run ```export PRIVATE_KEY=<insert key>```, and insert the key from the [test-net.md](Testnet Page)
 
 ### Step 2: Query the Proposal to get ballot_id
 
