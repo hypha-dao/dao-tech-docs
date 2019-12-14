@@ -10,14 +10,18 @@ To register a user for Hypha DAO, the user must sign a transaction to register.
 ```
 cleos -u https://test.telos.kitchen push action trailservice regvoter '["hyphalondon2", "0,HVOICE", null]' -p hyphalondon2
 ```
+> ```
+  cleos -u https://test.telos.kitchen push action trailservice regvoter '["hyphalondon2", "0,HVOICE", null]' -p hyphalondon2
+  ```
+
 
 Registering the voter within Telos Decide creates a record within the ```voter``` table, scoped by the account name. You can check the record by querying: 
 
-  :::bash
-  cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
+    :::bash
+    cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
 
 !!! note "Result"
-```
+``` json
     {
       "rows": [{
           "liquid": "0 HVOICE",
@@ -47,7 +51,7 @@ cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 hyphadao
 ```
 
 Results:
-```
+``` json
 {
   "rows": [{
       "applicant": "hyphalondon2",
@@ -74,7 +78,7 @@ Once the application is reviewed, an enroller can submit the ```enroll``` action
 
 The transaction is signed by ```johnnyhypha1```, but it could also be approved by ```samanthahyph``` because that account is listed under the ```hyphadaomain@enrollers``` permission.
 
-```
+``` 
 cleos -u https://test.telos.kitchen push action hyphadaomain enroll '["johnnyhypha1", "hyphalondon2", "Debbie confirmed she made this referral"]' -p johnnyhypha1
 ```
 
