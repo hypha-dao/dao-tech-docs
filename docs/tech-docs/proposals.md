@@ -1,10 +1,10 @@
 ## Creating a Proposal
 The ```propose``` action is used to submit a proposal to Hypha. 
 
-> The ```proposals``` table within the Hypha DAO contract uses the Telos Kitchen Sink design pattern, named such because it can store nearly any arbitrary data and it can adapt without upgrading the underlying EOSIO table structure.  ["Everything but the kitchen sink"](https://idioms.thefreedictionary.com/everything+but+the+kitchen+sink)
+> The ```proposals``` table within the Hypha DAO contract uses the ["Telos Kitchen Sink"](https://idioms.thefreedictionary.com/everything+but+the+kitchen+sink) design pattern, named such because it can store nearly any arbitrary data and it can adapt without upgrading the underlying EOSIO table structure.  
 
 Here's the method signature for the ```propose``` action.
-```
+``` c++
 ACTION propose (const name&                		 proposer, 
                 const name&                      proposal_type,
                 const std::optional<name>&       trx_action_name,
@@ -21,13 +21,15 @@ ACTION propose (const name&                		 proposer,
 ### Proposal Types
 Hypha DAO *currently* supports *three* built in proposal types.
 
-The ```proposal_type``` is an EOSIO ```name``` value. NOTE: proposal types are plural by practice.
+The ```proposal_type``` is an EOSIO ```name``` value. 
 
 Proposal Type   | Used For                                                   | Link
 --------------- | ------------------------------------------------------------- | ------
 roles           | Propose Creation of a New DAO Role                 | [View Details](proposals/roles.md)
 assignments     | Propose Assignment of a Person to an Existing Role | [View Details](proposals/assignments.md)
 payouts         | Propose a One-time Payout                 | [View Details](proposals/payouts.md)
+
+> NOTE: proposal types are plural by practice
 
 ### Required Values
 Certain values are required to be within the ```map``` parameters for certain proposal types.   All proposals support/require ```title```, ```description```, and ```content```.  
@@ -43,12 +45,12 @@ content     | Any general purpose content field for text or markdown        | st
 To query for a proposal, the ```proposal_type``` is the scope and the primary key is the ```id```.  There are also indexes for ```proposer```, ```created_date```, and ```updated_date```.
 
 You can query for the most recently created proposal using this query with ```cleos```.
-```
+``` bash
 cleos -u https://test.telos.kitchen get table -l 1 --index 2 --key-type i64 -r hyphadaomain roles proposals
 ```
 
 Alternatively, you can query using eosjs. The below example, just as above, prints the most recently created roles proposal.
-```
+``` JavaScript
 async function printLastCreatedProposal (proposalType) {
   let rpc;
   let options = {};
@@ -79,14 +81,14 @@ See [Proposal Queries](proposals/eosjs-queries.md) for a complete node script
 ## Voting on a Proposal
 To vote for a proposal, use the ```castvote``` action on ```trailservice```.
 
-```
+``` bash
 cleos -u https://test.telos.kitchen push action trailservice castvote '["haydenhypha1", "hypha1.....1d", ["pass"]]' -p haydenhypha1
 ```
 
 ## Closing a Proposal
 To close the proposal, call the ```closeprop``` action.  If the proposal has enough votes, this action will invoke the ```trx_action_name``` within the proposal and pass the ```id``` attribute.  At that point, the code within ```trx_action_name``` will be able to query and access all of the data stored within the ```proposal``` object. See example below. 
 
-```
+``` bash
 cleos -u https://test.telos.kitchen push action hyphadaomain closeprop '["roles", 0]' -p haydenhypha1
 ```
 
@@ -95,7 +97,7 @@ When a role proposal type is closed, and it has enough votes to pass, it trigger
 
 And as you can see, if it passes, the new role is created within the ```holocracy``` class.
 
-```
+``` c++
 void hyphadao::newrole (const uint64_t& proposal_id) {
 
    	require_auth (get_self());
@@ -120,23 +122,26 @@ void hyphadao::newrole (const uint64_t& proposal_id) {
 Now that the proposal is passed and executed, you can view the newly created role.
 
 ```
-➜ cleos -u https://test.telos.kitchen get table -l 1 -r hyphadaomain hyphadaomain roles
-{
-  "rows": [{
-      "role_id": 0,
-      "title": "Underwater Basketweaver",
-      "description": "Weave baskets at the bottom of the sea",
-      "content": "We make *great* baskets.",
-      "hypha_salary": "11 HYPHA",
-      "seeds_salary": "11.00000000 SEEDS",
-      "voice_salary": "11 HVOICE",
-      "start_period": 41,
-      "end_period": 51,
-      "created_date": "2019-12-12T20:55:59.500",
-      "updated_date": "2019-12-12T20:55:59.500"
+cleos -u https://test.telos.kitchen get table -l 1 -r hyphadaomain hyphadaomain roles
+```
+Results:
+``` json
+    {
+    "rows": [{
+        "role_id": 0,
+        "title": "Underwater Basketweaver",
+        "description": "Weave baskets at the bottom of the sea",
+        "content": "We make *great* baskets.",
+        "hypha_salary": "11 HYPHA",
+        "seeds_salary": "11.00000000 SEEDS",
+        "voice_salary": "11 HVOICE",
+        "start_period": 41,
+        "end_period": 51,
+        "created_date": "2019-12-12T20:55:59.500",
+        "updated_date": "2019-12-12T20:55:59.500"
+        }
+    ],
+    "more": false
     }
-  ],
-  "more": false
-}
 ```
 

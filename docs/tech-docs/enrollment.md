@@ -1,8 +1,8 @@
 
 ## Step 1: Register and Apply
 There are two actions that require approval from the applicant:
-- ```regvoter``` on Telos Decide, and 
-- ```apply``` on ```hyphadaomain```.
+*   ```regvoter``` on Telos Decide, and 
+*   ```apply``` on ```hyphadaomain```.
 
 ### Telos Decide ```regvoter```
 To register a user for Hypha DAO, the user must sign a transaction to ```regvoter```.
@@ -75,7 +75,7 @@ Once the application is reviewed, an enroller can submit the ```enroll``` action
 
 The transaction is signed by ```johnnyhypha1```, but it could also be approved by ```samanthahyph``` because that account is listed under the ```hyphadaomain@enrollers``` permission.
 
-``` 
+``` bash
 cleos -u https://test.telos.kitchen push action hyphadaomain enroll '["johnnyhypha1", "hyphalondon2", "Debbie confirmed she made this referral"]' -p johnnyhypha1
 ```
 
@@ -105,11 +105,11 @@ Result:
     ],
     "more": false
   }
-  ```
+```
 
 ### Check the ```applicants``` table
 The application is erased. 
-```
+``` bash
 cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 --upper hyphalondon2 hyphadaomain hyphadaomain applicants
 ```
 Results:
@@ -122,7 +122,7 @@ Results:
 
 ### Check the ```members``` table
 The member is added.
-```
+``` bash
 cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 --upper hyphalondon2 hyphadaomain hyphadaomain members
 ```
 Results:
