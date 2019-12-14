@@ -1,6 +1,9 @@
 site_name: Hypha DAO User's Guide
 theme:
   name: 'material'
+  pallette:
+    primary: '#0084a8'
+    accent: '#5bd4ca'
 nav:
 - Home: index.md
 - Enrollment: enrollment.md
