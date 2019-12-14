@@ -1,6 +1,7 @@
 image: python:alpine
 
 before_script:
+  - apt update && apt install git
   - pip install mkdocs mkdocs-material pygments pymdown-extensions mkdocs-git-revision-date-localized-plugin
   - pip install awscli
 
