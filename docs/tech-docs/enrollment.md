@@ -5,20 +5,20 @@ There are two actions that require approval from the applicant:
 - ```apply``` on ```hyphadaomain```.
 
 ### Telos Decide ```regvoter```
-To register a user for Hypha DAO, the user must sign a transaction to register.
+To register a user for Hypha DAO, the user must sign a transaction to ```regvoter```.
 
-```bash
+``` bash
 cleos -u https://test.telos.kitchen push action trailservice regvoter '["hyphalondon2", "0,HVOICE", null]' -p hyphalondon2
 ```
 
 Registering the voter within Telos Decide creates a record within the ```voter``` table, scoped by the account name. You can check the record by querying: 
 
-    :::bash
+``` bash
     cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
+```
 
-!!! note "Result"
-
-> ``` json
+Result:
+``` json
     {
       "rows": [{
           "liquid": "0 HVOICE",
@@ -31,34 +31,34 @@ Registering the voter within Telos Decide creates a record within the ```voter``
       ],
       "more": false
     }
-  ```
+```
 
 > NOTE: The HVOICE balances within this table are still zero. This is because the application has not been approved yet. 
 
-### Hypha DAO Apply
+### Apply within Hypha DAO
 The user must also approve the action call to ```apply```. For this application, ```hyphalondon2``` is asserting that they met with Debbie at a conference, who referred the person to join.
 
-```bash
+``` bash
 cleos -u https://test.telos.kitchen push action hyphadaomain apply '["hyphalondon2", "I met with Debbie at the regen conference and we talked about Hypha. I would like to join."]' -p hyphalondon2
 ```
 
 You can verify that the application was saved by querying the ```applicants``` table.
-```
+``` bash
 cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 hyphadaomain hyphadaomain applicants
 ```
 
 Results:
 ``` json
-{
-  "rows": [{
-      "applicant": "hyphalondon2",
-      "content": "I met with Debbie at the regen conference and we talked about Hypha. I would like to join.",
-      "created_date": "2019-12-14T16:11:40.500",
-      "updated_date": "2019-12-14T16:11:40.500"
-    }
-  ],
-  "more": false
-}
+  {
+    "rows": [{
+        "applicant": "hyphalondon2",
+        "content": "I met with Debbie at the regen conference and we talked about Hypha. I would like to join.",
+        "created_date": "2019-12-14T16:11:40.500",
+        "updated_date": "2019-12-14T16:11:40.500"
+      }
+    ],
+    "more": false
+  }
 ```
 
 ## Step 2: Enroll and Mint HVOICE
@@ -91,21 +91,21 @@ The new user has 1 HVOICE.
 cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
 ```
 
-Results:
-```
-{
-  "rows": [{
-      "liquid": "1 HVOICE",
-      "staked": "0 HVOICE",
-      "staked_time": "2019-12-10T18:05:41",
-      "delegated": "0 HVOICE",
-      "delegated_to": "",
-      "delegation_time": "2019-12-10T18:05:41"
-    }
-  ],
-  "more": false
-}
-```
+Result:
+``` json
+  {
+    "rows": [{
+        "liquid": "1 HVOICE",
+        "staked": "0 HVOICE",
+        "staked_time": "2019-12-10T18:05:41",
+        "delegated": "0 HVOICE",
+        "delegated_to": "",
+        "delegation_time": "2019-12-10T18:05:41"
+      }
+    ],
+    "more": false
+  }
+  ```
 
 ### Check the ```applicants``` table
 The application is erased. 
@@ -113,7 +113,7 @@ The application is erased.
 cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 --upper hyphalondon2 hyphadaomain hyphadaomain applicants
 ```
 Results:
-```
+``` json
 {
   "rows": [],
   "more": false
@@ -126,7 +126,7 @@ The member is added.
 cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 --upper hyphalondon2 hyphadaomain hyphadaomain members
 ```
 Results:
-```
+``` json
 {
   "rows": [{
       "member": "hyphalondon2"
@@ -139,7 +139,7 @@ Results:
 ## Full Life Cycle
 Here are the cleos commands for the full lifecycle.
 
-```
+``` bash
 # You can run these statements over and over because the commands end with the same state as the beginning
 # The applicant must run these two actions (preferably as the same transaction)
 cleos -u https://test.telos.kitchen push action trailservice regvoter '["hyphalondon2", "0,HVOICE", null]' -p hyphalondon2
