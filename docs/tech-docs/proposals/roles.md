@@ -112,10 +112,10 @@ The ```ballot_id``` attribute, which was system-generated when the proposal was 
 It will be saved in the ```names``` map.
 ```
 "names": [
-      {
+    {
         "key": "ballot_id",
         "value": "hypha1.....23"
-      },
+    },
 ```
 
 
@@ -127,7 +127,7 @@ cleos -u https://test.telos.kitchen push action trailservice castvote '["haydenh
 ```
 
 ### Step 4: Close Proposal to Create the Role
-To close the proposal, call the ```closeprop`` action.  If the proposal has enough votes, this action will create the role.
+To close the proposal, call the ```closeprop``` action.  If the proposal has enough votes, this action will create the role.
 
 ```
 cleos -u https://test.telos.kitchen push action hyphadaomain closeprop '["roles", 26]' -p haydenhypha1

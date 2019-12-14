@@ -1,6 +1,6 @@
-## Query Examples
 
 Below are two examples of how to query the proposals table from EOSJS.
+
 
 ```
 const { JsonRpc } = require("eosjs");

@@ -1,8 +1,9 @@
-## EOSJS Propose Example
 
-This code can be used to create a ```propose.js``` file which can be used in create proposals in the test environment, and illustrates a full example of calling the ```propose``` action.
+This code can be used as a standalone node script example (we call it ```propose.js```) file which can be used in create proposals in the test environment, and illustrates a full example of calling the ```propose``` action.
 
 You can replace the ```data``` object below with the example data object provided in the details proposal type documentation.
+
+> NOTE: populate an environment variable for ```PRIVATE_KEY```
 
 ```
 const { Api, JsonRpc } = require("eosjs");

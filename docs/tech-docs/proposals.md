@@ -120,4 +120,23 @@ void hyphadao::newrole (const uint64_t& proposal_id) {
 Now that the proposal is passed and executed, you can view the newly created role.
 
 ```
-cleos 
+➜ cleos -u https://test.telos.kitchen get table -l 1 -r hyphadaomain hyphadaomain roles
+{
+  "rows": [{
+      "role_id": 0,
+      "title": "Underwater Basketweaver",
+      "description": "Weave baskets at the bottom of the sea",
+      "content": "We make *great* baskets.",
+      "hypha_salary": "11 HYPHA",
+      "seeds_salary": "11.00000000 SEEDS",
+      "voice_salary": "11 HVOICE",
+      "start_period": 41,
+      "end_period": 51,
+      "created_date": "2019-12-12T20:55:59.500",
+      "updated_date": "2019-12-12T20:55:59.500"
+    }
+  ],
+  "more": false
+}
+```
+
