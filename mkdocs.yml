@@ -3,7 +3,7 @@ theme:
   name: 'material'
 nav:
 - Home: index.md
-- Membership: membership.md
+- Enrollment: enrollment.md
 - Profiles: profiles.md
 - Proposals: proposals.md
 - Test Net: test-net.md

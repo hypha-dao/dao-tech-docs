@@ -12,13 +12,13 @@ Applicant submits their account name and plain text application.
 
 ## Step 3 - Approved by an Enroller
 
-Accounts that have the ```hyphadaomain@enrollers``` permission have the ability to accept applicants. Enrollers can be added based on a multisig transaction.
+Accounts that have the ```hyphadaomain@enrollers``` permission have the ability to accept applicants. 
 
 ![enrollers permissions](img/enrollers_permission.png)
 
 *Above: enrollers permission is a child permission of active*
 
-In the near future, enrollers will only be able to be added or removed from a proposal. 
+Enrollers can be added based on a multisig transaction. In the near future, enrollers will only be able to be added or removed from a proposal.
 
 ### Step 4 - Confirm Reciept of HVOICE token
 
