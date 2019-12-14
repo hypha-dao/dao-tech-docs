@@ -41,5 +41,3 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
-plugins:
-  - git-revision-date-localized
