@@ -16,3 +16,30 @@ nav:
         - 'Payouts': 'tech-docs/proposals/payouts.md'
         - 'EOSJS Propose': 'tech-docs/proposals/eosjs-propose.md'
         - 'EOSJS Queries': 'tech-docs/proposals/eosjs-queries.md'
+
+markdown_extensions:
+  - codehilite:
+      linenums: true
+  - admonition
+  - toc:
+      permalink: true
+
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins:
+  - git-revision-date-localized

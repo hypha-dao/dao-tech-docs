@@ -1,6 +1,8 @@
 
-## Step 1: Apply and Register
-There are two actions that require approval from the applicant, ```regvoter``` on Telos Decide and ```apply``` on ```hyphadaomain```.
+## Step 1: Register and Apply
+There are two actions that require approval from the applicant, 
+1. ```regvoter``` on Telos Decide, and 
+1. ```apply``` on ```hyphadaomain```.
 
 ### Telos Decide ```regvoter```
 To register a user for Hypha DAO, the user must sign a transaction to register.
@@ -12,20 +14,22 @@ cleos -u https://test.telos.kitchen push action trailservice regvoter '["hyphalo
 Registering the voter within Telos Decide creates a record within the ```voter``` table, scoped by the account name. You can check the record by querying: 
 
 ```
-➜ cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
-{
-  "rows": [{
-      "liquid": "0 HVOICE",
-      "staked": "0 HVOICE",
-      "staked_time": "2019-12-14T16:11:40",
-      "delegated": "0 HVOICE",
-      "delegated_to": "",
-      "delegation_time": "2019-12-14T16:11:40"
-    }
-  ],
-  "more": false
-}
+cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
 ```
+
+!!! note ""
+    {
+      "rows": [{
+          "liquid": "0 HVOICE",
+          "staked": "0 HVOICE",
+          "staked_time": "2019-12-14T16:11:40",
+          "delegated": "0 HVOICE",
+          "delegated_to": "",
+          "delegation_time": "2019-12-14T16:11:40"
+        }
+      ],
+      "more": false
+    }
 
 > NOTE: The HVOICE balances within this table are still zero. This is because the application has not been approved yet. 
 
@@ -38,7 +42,11 @@ cleos -u https://test.telos.kitchen push action hyphadaomain apply '["hyphalondo
 
 You can verify that the application was saved by querying the ```applicants``` table.
 ```
-➜ cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 hyphadaomain hyphadaomain applicants
+cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 hyphadaomain hyphadaomain applicants
+```
+
+Results:
+```
 {
   "rows": [{
       "applicant": "hyphalondon2",
@@ -54,24 +62,20 @@ You can verify that the application was saved by querying the ```applicants``` t
 ## Step 2: Enroll and Mint HVOICE
 The Enrollers are assigned to review applications and enroll new accounts. Enrollers are added to a special EOSIO permission on the ```hyphadaomain``` account named ```enrollers```.
 
-![enrollers permissions](img/enrollers_permission.png)
+![enrollers permissions](../img/enrollers_permission.png)
 
 *Above: enrollers permission is a child permission of active*
+
 [Click to here to view on bloks.io](https://telos-test.bloks.io/account/hyphadaomain#keys)
 
-### Enroller Notifications
-We need to figure out how to notify enrollers when a new application is submitted. (**PPP node**)
-
 ### ```enroll``` action
-Once the application is reviewed, an enroller can submit the ```enroll``` action and include a note with the enrollment.  
+Once the application is reviewed, an enroller can submit the ```enroll``` action and include a note with the enrollment. The string provided as the last parameter to ```enroll``` is not persisted within the smart contract. It is only written to the action traces in order to record any notes associated with the approval. 
 
-> NOTE: the string provided as the second parameter to ```enroll``` is not persisted within the smart contract. It is only written to the action traces in order to record any notes associated with the approval. 
+The transaction is signed by ```johnnyhypha1```, but it could also be approved by ```samanthahyph``` because that account is listed under the ```hyphadaomain@enrollers``` permission.
 
 ```
-cleos -u https://test.telos.kitchen push action hyphadaomain enroll '["johnnyhypha1", "hyphalondon2", "Debbie confirmed she made this referral"]' -p hyphadaomain@enrollers
+cleos -u https://test.telos.kitchen push action hyphadaomain enroll '["johnnyhypha1", "hyphalondon2", "Debbie confirmed she made this referral"]' -p johnnyhypha1
 ```
-
-> NOTE: the transaction above is approved by ```johnnyhypha1```, who is an assigned enroller as evidenced by this account name being listed with the ```hyphadaomain@enrollers``` permission. The 
 
 When the enroll action is executed, three behaviors occur: 
 1. ```1 HVOICE``` is minted to the approved applicant, making them eligible to vote
@@ -83,6 +87,10 @@ Check HVOICE balance using the ```voters``` table, scoped by the voter's account
 The new user has 1 HVOICE.
 ```
 cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
+```
+
+Results:
+```
 {
   "rows": [{
       "liquid": "1 HVOICE",
@@ -100,7 +108,10 @@ cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
 ### Check the ```applicants``` table
 The application is erased. 
 ```
-➜ cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 --upper hyphalondon2 hyphadaomain hyphadaomain applicants
+cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 --upper hyphalondon2 hyphadaomain hyphadaomain applicants
+```
+Results:
+```
 {
   "rows": [],
   "more": false
@@ -110,7 +121,10 @@ The application is erased.
 ### Check the ```members``` table
 The member is added.
 ```
-➜ cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 --upper hyphalondon2 hyphadaomain hyphadaomain members
+cleos -u https://test.telos.kitchen get table -l 1 --lower hyphalondon2 --upper hyphalondon2 hyphadaomain hyphadaomain members
+```
+Results:
+```
 {
   "rows": [{
       "member": "hyphalondon2"
