@@ -1,7 +1,7 @@
 
 This script provides an EOSJS example of applying and registering as a voter in the same transaction.
 
-``` JavaScript
+``` JavaScript hl_lines="20 50"
 const { Api, JsonRpc } = require("eosjs");
 const { JsSignatureProvider } = require("eosjs/dist/eosjs-jssig");
 const fetch = require("node-fetch");

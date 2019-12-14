@@ -14,7 +14,7 @@ cleos -u https://test.telos.kitchen push action trailservice regvoter '["hyphalo
 Registering the voter within Telos Decide creates a record within the ```voter``` table, scoped by the account name. You can check the record by querying: 
 
 ``` bash
-    cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
+cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
 ```
 
 Result:

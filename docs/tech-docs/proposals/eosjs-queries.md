@@ -2,7 +2,7 @@
 Below are two examples of how to query the proposals table from EOSJS.
 
 
-```
+``` JavaScript
 const { JsonRpc } = require("eosjs");
 const fetch = require("node-fetch"); 
 
