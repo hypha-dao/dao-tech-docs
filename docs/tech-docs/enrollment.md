@@ -7,13 +7,9 @@ There are two actions that require approval from the applicant:
 ### Telos Decide ```regvoter```
 To register a user for Hypha DAO, the user must sign a transaction to register.
 
-```
+```bash
 cleos -u https://test.telos.kitchen push action trailservice regvoter '["hyphalondon2", "0,HVOICE", null]' -p hyphalondon2
 ```
-> ```
-  cleos -u https://test.telos.kitchen push action trailservice regvoter '["hyphalondon2", "0,HVOICE", null]' -p hyphalondon2
-  ```
-
 
 Registering the voter within Telos Decide creates a record within the ```voter``` table, scoped by the account name. You can check the record by querying: 
 
@@ -21,7 +17,8 @@ Registering the voter within Telos Decide creates a record within the ```voter``
     cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
 
 !!! note "Result"
-``` json
+
+> ``` json
     {
       "rows": [{
           "liquid": "0 HVOICE",
@@ -34,7 +31,7 @@ Registering the voter within Telos Decide creates a record within the ```voter``
       ],
       "more": false
     }
-```
+  ```
 
 > NOTE: The HVOICE balances within this table are still zero. This is because the application has not been approved yet. 
 
