@@ -1,10 +1,19 @@
-## User Enrollment
 
-To register a user for Hypha DAO, the user must sign a transaction to register, and the ```hyphdaomain``` account must approve the mint action to actually issue the token.
+## Step 1: Apply and Register
+There are two actions that require approval from the applicant, ```regvoter``` on Telos Decide and ```apply``` on ```hyphadaomain```.
+
+### Telos Decide ```regvoter```
+To register a user for Hypha DAO, the user must sign a transaction to register.
 
 ```
-cleos -u https://test.telos.kitchen push action trailservice regvoter '["johnnyhypha1", "0,HVOICE", null]' -p johnnyhypha1
-cleos -u https://test.telos.kitchen push action trailservice mint '["johnnyhypha1", "1 HVOICE", "original mint"]' -p hyphadaomain
+cleos -u https://test.telos.kitchen push action trailservice regvoter '["hyphalondon2", "0,HVOICE", null]' -p hyphalondon2
+```
+
+### Hypha DAO Apply
+The user must also approve the action call to ```apply```.
+
+```
+cleos -u https://test.telos.kitchen push action hyphadaomain apply '["hyphalondon2", "I met with Debbie at the regen conference and we talked about Hypha. I would like to join."]' -p hyphalondon2
 ```
 
 ### Check HVOICE Balance
@@ -24,3 +33,5 @@ cleos -u https://test.telos.kitchen get table trailservice johnnyhypha1 voters
   "more": false
 }
 ```
+
+cleos -u https://test.telos.kitchen push action trailservice mint '["johnnyhypha1", "1 HVOICE", "original mint"]' -p hyphadaomain
