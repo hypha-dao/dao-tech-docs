@@ -1,8 +1,8 @@
 
 ## Step 1: Register and Apply
-There are two actions that require approval from the applicant, 
-1. ```regvoter``` on Telos Decide, and 
-1. ```apply``` on ```hyphadaomain```.
+There are two actions that require approval from the applicant:
+- ```regvoter``` on Telos Decide, and 
+- ```apply``` on ```hyphadaomain```.
 
 ### Telos Decide ```regvoter```
 To register a user for Hypha DAO, the user must sign a transaction to register.
@@ -13,11 +13,11 @@ cleos -u https://test.telos.kitchen push action trailservice regvoter '["hyphalo
 
 Registering the voter within Telos Decide creates a record within the ```voter``` table, scoped by the account name. You can check the record by querying: 
 
-```
-cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
-```
+  :::bash
+  cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
 
-!!! note ""
+!!! note "Result"
+```
     {
       "rows": [{
           "liquid": "0 HVOICE",
@@ -30,13 +30,14 @@ cleos -u https://test.telos.kitchen get table trailservice hyphalondon2 voters
       ],
       "more": false
     }
+```
 
 > NOTE: The HVOICE balances within this table are still zero. This is because the application has not been approved yet. 
 
 ### Hypha DAO Apply
 The user must also approve the action call to ```apply```. For this application, ```hyphalondon2``` is asserting that they met with Debbie at a conference, who referred the person to join.
 
-```
+```bash
 cleos -u https://test.telos.kitchen push action hyphadaomain apply '["hyphalondon2", "I met with Debbie at the regen conference and we talked about Hypha. I would like to join."]' -p hyphalondon2
 ```
 
