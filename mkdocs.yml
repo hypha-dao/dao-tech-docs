@@ -12,6 +12,7 @@ nav:
 - Test Net: test-net.md
 # - Tech Docs: 
 - Enrollment: 'tech-docs/enrollment.md'
+- Accounts: 'tech-docs/accounts.md'
 - Proposals:
     - 'Overview': 'tech-docs/proposals.md'
     - 'Roles': 'tech-docs/proposals/roles.md'

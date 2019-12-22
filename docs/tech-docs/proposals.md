@@ -5,10 +5,7 @@ The ```propose``` action is used to submit a proposal to Hypha.
 
 Here's the method signature for the ```propose``` action.
 ``` c++
-ACTION propose (const name&                		 proposer, 
-                const name&                      proposal_type,
-                const std::optional<name>&       trx_action_name,
-                const map<string, name> 		 names,
+ACTION propose (const map<string, name> 		 names,
                 const map<string, string>        strings,
                 const map<string, asset>         assets,
                 const map<string, time_point>    time_points,
