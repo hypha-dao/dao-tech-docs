@@ -1,4 +1,4 @@
-site_name: Hypha DAO User's Guide
+site_name: Hypha DAO Developer's Guide
 theme:
   name: 'material'
   pallette:
@@ -6,19 +6,19 @@ theme:
     accent: '#5bd4ca'
 nav:
 - Home: index.md
-- Enrollment: enrollment.md
-- Profiles: profiles.md
-- Proposals: proposals.md
+# - Enrollment: enrollment.md
+# - Profiles: profiles.md
+# - Proposals: proposals.md
 - Test Net: test-net.md
-- Tech Docs: 
-    - 'Enrollment': 'tech-docs/enrollment.md'
-    - Proposals:
-        - 'Overview': 'tech-docs/proposals.md'
-        - 'Roles': 'tech-docs/proposals/roles.md'
-        - 'Assignments': 'tech-docs/proposals/assignments.md'
-        - 'Payouts': 'tech-docs/proposals/payouts.md'
-        - 'EOSJS Propose': 'tech-docs/proposals/eosjs-propose.md'
-        - 'EOSJS Queries': 'tech-docs/proposals/eosjs-queries.md'
+# - Tech Docs: 
+- Enrollment: 'tech-docs/enrollment.md'
+- Proposals:
+    - 'Overview': 'tech-docs/proposals.md'
+    - 'Roles': 'tech-docs/proposals/roles.md'
+    - 'Assignments': 'tech-docs/proposals/assignments.md'
+    - 'Payouts': 'tech-docs/proposals/payouts.md'
+    - 'eosjs Propose': 'tech-docs/proposals/eosjs-propose.md'
+    - 'eosjs Queries': 'tech-docs/proposals/eosjs-queries.md'
 
 markdown_extensions:
   - codehilite:

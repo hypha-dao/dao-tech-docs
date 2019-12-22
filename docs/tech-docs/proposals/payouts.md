@@ -1,5 +1,3 @@
-
-
 ## Supported Attributes
 Payout proposals require the following additional attributes.
 
@@ -11,57 +9,66 @@ seeds_amount    | One time SEEDS payment          | asset     | "45.50000000 SEE
 hvoice_amount   | One time HVOICE payment       | asset     | "50 HVOICE"
 contribution_date  | The date that the corresponding contribution (funds, labor, etc) was provided  | time_point | 2019-09-08T14:30:58.000
 
-## Example EOSJS Code
-The ```api.transact``` method in eosjs requires a ```data``` object.  Here is an example object for a payout proposal.
-
-```
-data: {
-        proposer: "jameshypha11",
-        proposal_type: "payouts", 
-        trx_action_name: "makepayout",
-        names: [
-            {
-                "key":"recipient",
-                "value":"jameshypha11"
-            }
-        ],
-        strings: [
-                {
-                    "key": "title",
-                    "value": "Payout for Beach Cleanup"
-                },
-                {
-                    "key": "description",
-                    "value": "we cleaned up a dirty beach"
-                },
-                {
-                    "key": "content",
-                    "value": "Cleaner beaches make better baskets"
-                }
-            ], 
-            assets: [
-                {
-                    "key": "hypha_amount",
-                    "value": "2 HYPHA"
-                },
-                {
-                    "key": "seeds_amount",
-                    "value": "7.00000000 SEEDS"
-                },
-                {
-                    "key": "hvoice_amount",
-                    "value": "3 HVOICE"
-                }
-            ],
-        time_points: [
-            {
-                "key": "contribution_date",
-                "value": "2019-09-08T14:30:58.000"
-            }
-        ],
-        ints: [],
-        floats: [],
-        trxs: []
+## Example JSON Payout Proposal
+Here's an example payout proposal. See here for live file: https://gitlab.com/hypha/hypha-dao-smart-contracts/blob/migration/tests/proposals/payout.json
+``` JSON
+{
+  "data": {
+    "names": [
+      {
+        "key": "proposer",
+        "value": "johnnyhypha1"
+      },
+      {
+        "key": "recipient",
+        "value": "johnnyhypha1"
+      },
+      {
+        "key": "proposal_type",
+        "value": "payouts"
+      },
+      {
+        "key": "trx_action_name",
+        "value": "makepayout"
+      }
+    ],
+    "strings": [
+      {
+        "key": "title",
+        "value": "Payout for Beach Cleanup"
+      },
+      {
+        "key": "description",
+        "value": "We cleaned up a dirty beach"
+      },
+      {
+        "key": "content",
+        "value": "Cleaner beaches make better baskets"
+      }
+    ],
+    "assets": [
+      {
+        "key": "hypha_amount",
+        "value": "2 HYPHA"
+      },
+      {
+        "key": "seeds_amount",
+        "value": "7.00000000 SEEDS"
+      },
+      {
+        "key": "hvoice_amount",
+        "value": "3 HVOICE"
+      }
+    ],
+    "time_points": [
+      {
+        "key": "contribution_date",
+        "value": "2019-09-08T14:30:58.000"
+      }
+    ],
+    "ints": [],
+    "floats": [],
+    "trxs": []
   }
 }
 ```

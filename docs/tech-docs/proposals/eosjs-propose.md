@@ -1,11 +1,13 @@
 
-This code can be used as a standalone node script example (we call it ```propose.js```) file which can be used in create proposals in the test environment, and illustrates a full example of calling the ```propose``` action.
+This code can be used as a standalone node script example (e.g. ```propose.js```) file which can be used in create proposals in the test environment, and illustrates a full example of calling the ```propose``` action.
 
 You can replace the ```data``` object below with the example data object provided in the details proposal type documentation.
 
+You can also see the ```dao.js``` for an even better example of usage.
+
 > NOTE: populate an environment variable for ```PRIVATE_KEY```
 
-```
+```JavaScript
 const { Api, JsonRpc } = require("eosjs");
 const { JsSignatureProvider } = require("eosjs/dist/eosjs-jssig");
 const fetch = require("node-fetch");
@@ -36,13 +38,18 @@ const sendTrx = async () => {
         }
       ],
       data: {
-        proposer: "johnnyhypha1",
-        proposal_type: "payouts",
-        trx_action_name: "makepayout",
         names: [
           {
             "key": "recipient",
             "value": "johnnyhypha1"
+          },
+          { 
+              "key":"proposal_type",
+              "value":"payouts"
+          },
+          {
+              "key":"trx_action_name",
+              "value":"makepayout"
           }
         ],
         strings: [

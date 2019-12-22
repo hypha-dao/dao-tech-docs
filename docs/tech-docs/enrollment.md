@@ -60,6 +60,8 @@ Results:
     "more": false
   }
 ```
+#### Editing an Application
+The ```apply``` action can be called many times for the same applicant, and each time the content will overwrite the prior content. 
 
 ## Step 2: Enroll and Mint HVOICE
 The Enrollers are assigned to review applications and enroll new accounts. Enrollers are added to a special EOSIO permission on the ```hyphadaomain``` account named ```enrollers```.
